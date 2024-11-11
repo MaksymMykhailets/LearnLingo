@@ -1,0 +1,88 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 128px 20px 128px;
+    position: relative; 
+}
+  
+.logo {
+    display: flex;
+    align-items: center;
+}
+  
+.icon {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(to bottom, #338AF3 50%, #FFDA44 50%);
+    border-radius: 50%;
+    margin-right: 8px;
+}
+  
+.brandName {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2; 
+    letter-spacing: -0.02em;
+}
+  
+.navLinks {
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%);
+    display: flex;
+    gap: 28px;
+}
+
+.navLink {
+    line-height: 1.25;
+    text-align: center; 
+    color: #121417;
+    font-weight: 500;
+}
+  
+.navLink.active {
+    color: var(--primary);
+}
+  
+.authButtons {
+    display: flex;
+    gap: 16px;
+}
+  
+.loginButton,
+.registerButton,
+.logoutButton {
+    display: flex;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    color: #FFF;
+    font-weight: 700;
+    line-height: 1.25;
+}
+  
+.loginButton {
+    background: none;
+    color: inherit;
+    gap: 8px;
+}
+  
+.loginButton svg {
+    color: var(--primary);
+}
+  
+.registerButton {
+    display: flex;
+    padding: 14px 39px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 12px;
+    background-color: #121417;
+}
+
+.logoutButton {
+    color: inherit;
+    background: none;
+}

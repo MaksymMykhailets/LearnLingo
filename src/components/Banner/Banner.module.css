@@ -1,0 +1,115 @@
+.banner {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+    padding: 0 64px 20px;
+  }
+  
+  .textSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 98px 108px 98px 64px;
+    background-color: #F8F8F8;
+    border-radius: 30px;
+  }
+
+  .textSection h1 {
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1.16; 
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+  }
+  
+  .highlight {
+    background-color: var(--secondary);
+    border-radius: 8px;
+    padding:0 10px;
+    font-style: italic;
+  }
+  
+  .textSection p {
+    line-height: 1.37; 
+    letter-spacing: -0.02em;
+    margin-bottom: 64px;
+  }
+  
+  .getStartedButton {
+    width: 275px;
+    display: inline-flex;
+    padding: 16px 88px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background-color: var(--primary);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.55; 
+  }
+  
+  .getStartedButton:hover,
+  .getStartedButton:focus {
+    background-color: var(--secondary);
+  }
+  
+  .imageSection {
+    justify-content: center;
+    display: flex;
+    align-items: end;
+    background-color: var(--secondary);
+    border-radius: 30px;
+    padding: 80px 88px 0;
+  }
+  
+  .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../../img/thumb.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 391px;
+    height: 450px;
+  }
+  
+  @media only screen and (min-resolution: 192dpi) {
+    .image {
+      background-image: url(../../img/thumb@2x.webp);
+    }
+  }
+  
+  .statsSection {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 24px;
+    padding: 40px 20px;
+    border-radius: 30px;
+    border: 1.5px dashed #9FB7CE;
+    justify-items: center;
+  }
+  
+  .stat {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .stat h3 {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.14; 
+    letter-spacing: -0.02em;
+  }
+  
+  .stat p {
+    color: rgba(18, 20, 23, 0.70);
+    font-size: 14px;
+    line-height: 1.28; 
+    letter-spacing: -0.02em;
+    max-width: 92px;
+  }
+  

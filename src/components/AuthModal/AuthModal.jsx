@@ -1,0 +1,136 @@
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../../db/firebaseConfig';
+import { setUser } from '../../redux/auth/slice';
+import { addUser } from '../../redux/auth/operations';
+import css from './AuthModal.module.css';
+import { HiOutlineEyeOff } from "react-icons/hi"; 
+import { LuEye } from "react-icons/lu"; 
+import { IoCloseOutline } from "react-icons/io5";
+
+const loginSchema = yup.object().shape({
+  email: yup.string()
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
+      "Email should contain only latin characters and end with @gmail.com"
+    )
+    .required('Email is required'),
+  password: yup.string()
+    .min(6, 'Password must be at least 6 characters')
+    .required('Password is required'),
+});
+
+const registrationSchema = yup.object().shape({
+  name: yup.string()
+    .matches(
+      /^[A-Za-z\s]+$/, 
+      "Name should not contain numbers or special characters"
+    )
+    .min(2, 'Name should be at least 2 characters')
+    .max(20, 'Name should be at most 20 characters')
+    .required('Name is required'),
+  email: yup.string()
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
+      "Email should contain only latin characters and end with @gmail.com"
+    )
+    .required('Email is required'),
+  password: yup.string()
+    .min(6, 'Password must be at least 6 characters')
+    .required('Password is required'),
+});
+
+const AuthModal = ({ isOpen, onClose, isRegister }) => {
+  const dispatch = useDispatch();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({
+    resolver: yupResolver(isRegister ? registrationSchema : loginSchema),
+  });
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  const onSubmit = async (data) => {
+    const { name, email, password } = data;
+
+    try {
+      if (isRegister) {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        await updateProfile(user, { displayName: name });
+        await addUser(user.uid, { displayName: name, email });
+        dispatch(setUser({ uid: user.uid, email: user.email, displayName: name }));
+      } else {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        dispatch(setUser({ uid: user.uid, email: user.email, displayName: user.displayName }));
+      }
+      onClose();
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    if (!isOpen) reset();
+  }, [isOpen, reset]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div className={css.modalOverlay} onClick={onClose}>
+      <div className={css.modalContent} onClick={(e) => e.stopPropagation()}>
+        <button className={css.closeButton} onClick={onClose}>
+          <IoCloseOutline size={32} />
+        </button>
+        
+        <h2 className={css.title}>{isRegister ? 'Registration' : 'Log In'}</h2>
+        <p className={css.greeting}>{isRegister ? 'Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information' : 'Welcome back! Please enter your credentials to access your account and continue your search for a teacher.'}</p>
+        
+        <form onSubmit={handleSubmit(onSubmit)} className={css.authForm}>
+          {isRegister && (
+            <div className={css.formGroup}>
+              <input type="text" {...register('name')} className={css.input} placeholder='Name'/>
+              {errors.name && <p className={css.errorText}>{errors.name.message}</p>}
+            </div>
+          )}
+          <div className={css.formGroup}>
+            <input type="email" {...register('email')} className={css.input} placeholder='Email'/>
+            {errors.email && <p className={css.errorText}>{errors.email.message}</p>}
+          </div>
+          <div className={css.formGroup}>
+            <div className={css.inputWrapper}>
+              <input 
+                type={showPassword ? "text" : "password"} 
+                {...register('password')} 
+                className={css.input} 
+                placeholder='Password' 
+              />
+              <span onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <LuEye size={20} /> : <HiOutlineEyeOff size={20} />}
+              </span>
+            </div>
+            {errors.password && <p className={css.errorText}>{errors.password.message}</p>}
+          </div>
+          <button type="submit" className={css.submitButton}>
+            {isRegister ? 'Sign Up' : 'Log In'}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default AuthModal;

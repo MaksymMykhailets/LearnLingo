@@ -1,12 +1,11 @@
-import Auth from '../../components/Auth/Auth';
+import Banner from "../../components/Banner/Banner";
 
-const HomePage = () => {    
+const HomePage = () => {
   return (
     <div>
-      <h1>Home Page</h1>
-        <Auth />
+      <Banner />
     </div>
-  );
+  );   
 }
 
 export default HomePage;

@@ -12,9 +12,19 @@
     <symbol id="icon-heart" viewBox="0 0 38 32">
       <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.909" d="M32.839 4.355a8.672 8.672 0 0 0-6.13-2.54 8.664 8.664 0 0 0-6.13 2.54l-1.67 1.67-1.67-1.67a8.669 8.669 0 0 0-12.26 12.26l13.93 13.93 13.93-13.93a8.672 8.672 0 0 0 2.54-6.13 8.664 8.664 0 0 0-2.54-6.13z"/>
     </symbol>
+    <symbol id="icon-eye" viewBox="0 0 32 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="3.2" d="M23.92 23.92A13.43 13.43 0 0 1 16 26.667C6.667 26.667 1.333 16 1.333 16A24.605 24.605 0 0 1 8.08 8.08m5.12-2.427a12.161 12.161 0 0 1 2.8-.32C25.333 5.333 30.667 16 30.667 16a24.646 24.646 0 0 1-2.88 4.253m-8.96-1.426a4.003 4.003 0 0 1-5.755.102 3.994 3.994 0 0 1-.824-4.456 4.01 4.01 0 0 1 .927-1.298M1.333 1.333l29.333 29.333"/>
+    </symbol>
+    <symbol id="icon-close" viewBox="0 0 32 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" d="M24 8 8 24M8 8l16 16"/>
+    </symbol>
+    <symbol id="icon-status" viewBox="0 0 32 32">
+      <path fill="#fff" style="fill:var(--color1, #fff)" d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16 7.163 0 16 0s16 7.163 16 16z"/>
+      <path fill="#38cd3e" style="fill:var(--color2, #38cd3e)" d="M26.667 16c0 5.891-4.776 10.667-10.667 10.667S5.333 21.891 5.333 16 10.109 5.333 16 5.333 26.667 10.109 26.667 16z"/>
+    </symbol>
     <symbol id="icon-ukraine" viewBox="0 0 32 32">
-      <path fill="#ffda44" style="fill:var(--color1, #ffda44)" d="M16 32c8.837 0 16-7.163 16-16S24.837 0 16 0 0 7.163 0 16s7.163 16 16 16z"/>
-      <path fill="#338af3" style="fill:var(--color2, #338af3)" d="M0 16C0 7.164 7.163 0 16 0s16 7.163 16 16z"/>
+      <path fill="#ffda44" style="fill:var(--color3, #ffda44)" d="M16 32c8.837 0 16-7.163 16-16S24.837 0 16 0 0 7.163 0 16s7.163 16 16 16z"/>
+      <path fill="#338af3" style="fill:var(--color4, #338af3)" d="M0 16C0 7.164 7.163 0 16 0s16 7.163 16 16z"/>
     </symbol>
   </defs>
 </svg>
