@@ -1,0 +1,30 @@
+.page {
+    padding: 32px 128px 96px;
+    background-color: #F8F8F8;
+  }
+  
+  .teachersGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 64px;
+  }
+  
+  .loadMoreButton {
+    padding: 16px 48px;
+    border-radius: 12px;
+    background-color: var(--primary);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.55;
+  }
+  
+  .loadMoreButton:hover {
+    background-color: var(--secondary);
+  }
+  

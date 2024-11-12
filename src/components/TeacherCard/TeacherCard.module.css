@@ -1,0 +1,176 @@
+.card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 24px;
+}
+
+.avatarSection {
+  position: relative;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 100px;
+  border: 3px solid #FBE9BA;
+  background: #FFF;
+  padding: 12px;
+}
+
+.onlineStatus {
+  position: absolute;
+  top: 17px;
+  right: 25px;
+  width: 12px; 
+  height: 12px; 
+  background-color: #38CD3E;
+  border-radius: 50%;
+  border: 2px solid #fff; 
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.statsContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  align-items: flex-start;
+}
+
+.teacherInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.languages,
+.label {
+  font-size: inherit;
+  color: #8A8A89;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.stats {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.star {
+  color: #FFC531;
+}
+
+.money {
+  color: #38CD3E;
+}
+
+.favoriteIcon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.infoText {
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.readMore {
+  padding: 0;
+  display: inline-flex;
+  width: 80px;
+  justify-content: flex-start;
+  font-weight: 500;
+  line-height: 1.5;
+  background: none;
+  text-decoration-line: underline;
+  margin-bottom: 32px;
+}
+
+.levels {
+  display: flex;
+  gap: 8px;
+}
+
+.level {
+  display: flex;
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 35px;
+  border: 1px solid rgba(18, 20, 23, 0.20);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.14; 
+}
+
+.experience {
+  line-height: 1.5; 
+  margin-bottom: 16px;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.review {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.reviewerInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #555;
+}
+
+.reviewerName {
+  color: #8A8A89;
+  font-weight: 500;
+  line-height: 1.5; 
+}
+
+.reviewRating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ratingValue {
+  color: #121417;
+font-weight: 500;
+line-height: 1.28; 
+}
