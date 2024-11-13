@@ -16,13 +16,13 @@
     font-family: 'Roboto';
     src: url('../fonts/Roboto-Bold.ttf') format('ttf');
     font-weight: 700;
-    font-style: bold;
+    font-style: normal;
   }
 
 @font-face {
     font-family: 'Roboto';
     src: url('../fonts/Roboto-Italic.ttf') format('ttf');
     font-weight: 400;
-    font-style: italic;
+    font-style: normal;
   }
 
