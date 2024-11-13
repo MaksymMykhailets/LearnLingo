@@ -51,6 +51,7 @@ const AuthModal = ({ isOpen, onClose, isRegister }) => {
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [authError, setAuthError] = useState("");
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -62,9 +63,22 @@ const AuthModal = ({ isOpen, onClose, isRegister }) => {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
   const onSubmit = async (data) => {
     const { name, email, password } = data;
-
+    setAuthError(""); 
+  
     try {
       if (isRegister) {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -79,7 +93,14 @@ const AuthModal = ({ isOpen, onClose, isRegister }) => {
       }
       onClose();
     } catch (error) {
-      console.error(error.message);
+      console.error("Error code:", error.code);
+      if (error.code === "auth/invalid-credential") {
+        setAuthError("Invalid credentials. Please try again.");
+      } else if (error.code === "auth/too-many-requests") {
+        setAuthError("Too many unsuccessful login attempts. Please try again later.");
+      } else {
+        setAuthError("An error occurred. Please try again later.");
+      }
     }
   };
 
@@ -99,6 +120,8 @@ const AuthModal = ({ isOpen, onClose, isRegister }) => {
         <h2 className={css.title}>{isRegister ? 'Registration' : 'Log In'}</h2>
         <p className={css.greeting}>{isRegister ? 'Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information' : 'Welcome back! Please enter your credentials to access your account and continue your search for a teacher.'}</p>
         
+        {authError && <p className={css.authError}>{authError}</p>}
+
         <form onSubmit={handleSubmit(onSubmit)} className={css.authForm}>
           {isRegister && (
             <div className={css.formGroup}>

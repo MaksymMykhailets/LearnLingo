@@ -174,3 +174,23 @@
 font-weight: 500;
 line-height: 1.28; 
 }
+
+.bookLessonButton {
+  margin-top: 32px;
+  display: flex;
+  width: 232px;
+  padding: 16px 43px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background-color: var(--primary);
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.55; 
+}
+
+.bookLessonButton:hover,
+.bookLessonButton:focus {
+  background-color: var(--secondary);
+}

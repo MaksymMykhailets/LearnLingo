@@ -88,6 +88,10 @@
     color: red;
     font-size: 12px;
   }
+
+  .authError{
+    color: red;
+  }
   
   .submitButton {
     background-color: var(--primary);

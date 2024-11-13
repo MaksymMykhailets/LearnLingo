@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { database } from '../../db/firebaseConfig';
 import { ref, update, onValue, remove } from 'firebase/database';
+import BookingForm from '../BookingForm/BookingForm';
 import css from './TeacherCard.module.css';
 import { FaRegHeart, FaHeart, FaStar } from "react-icons/fa";
 import { IoBookOutline } from "react-icons/io5";
@@ -10,6 +11,7 @@ import toast, { Toaster } from 'react-hot-toast';
 const TeacherCard = ({ teacher }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [toastShown, setToastShown] = useState(false); 
   const user = useSelector(state => state.auth.user);
 
@@ -50,6 +52,14 @@ const TeacherCard = ({ teacher }) => {
       });
     }
     setIsFavorite(!isFavorite);
+  };
+
+  const handleBookingClick = () => {
+    setIsBookingModalOpen(true);
+  };
+
+  const closeBookingModal = () => {
+    setIsBookingModalOpen(false);
   };
 
   return (
@@ -114,7 +124,15 @@ const TeacherCard = ({ teacher }) => {
             <span key={level} className={css.level}>#{level}</span>
           ))}
         </div>
+
+        {isExpanded && (
+          <button onClick={handleBookingClick} className={css.bookLessonButton}>
+            Book trial lesson
+          </button>
+        )}
       </div>
+
+      {isBookingModalOpen && <BookingForm teacher={teacher} onClose={closeBookingModal} />}
     </div>
   );
 };
