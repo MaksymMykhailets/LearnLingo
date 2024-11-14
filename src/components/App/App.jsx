@@ -3,6 +3,7 @@ import { lazy, Suspense, useState } from "react";
 import Loader from "../Loader/Loader";
 import Navigation from "../Navigation/Navigation";
 import AuthModal from "../AuthModal/AuthModal";
+import PrivateRoute from "../PrivateRoute"; 
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const TeachersPage = lazy(() => import("../../pages/TeachersPage/TeachersPage"));
@@ -33,7 +34,14 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/teachers" element={<TeachersPage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route
+          path="/favorites"
+          element={
+            <PrivateRoute>
+              <FavoritesPage />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {isAuthModalOpen && (

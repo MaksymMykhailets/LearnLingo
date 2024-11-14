@@ -37,22 +37,19 @@ const TeacherCard = ({ teacher }) => {
       }
       return;
     }
-
+  
     const favoriteRef = ref(database, `users/${user.uid}/favorites/${teacher.name}-${teacher.surname}`);
     if (isFavorite) {
       remove(favoriteRef);
     } else {
-      update(favoriteRef, {
-        name: teacher.name,
-        surname: teacher.surname,
-        languages: teacher.languages,
-        price_per_hour: teacher.price_per_hour,
-        rating: teacher.rating,
-        avatar_url: teacher.avatar_url,
-      });
+      const teacherData = {
+        ...teacher,
+        levels: teacher.levels || [] 
+      };
+      update(favoriteRef, teacherData);
     }
     setIsFavorite(!isFavorite);
-  };
+  };    
 
   const handleBookingClick = () => {
     setIsBookingModalOpen(true);
@@ -88,39 +85,53 @@ const TeacherCard = ({ teacher }) => {
         </div>
 
         <div className={css.detailsContainer}>
-          <p className={css.infoText}><span className={css.label}>Speaks:</span> {teacher.languages.join(', ')}</p>
-          <p className={css.infoText}><span className={css.label}>Lesson info:</span> {teacher.lesson_info}</p>
-          <p className={css.infoText}><span className={css.label}>Conditions:</span> {teacher.conditions.join('; ')}</p>
+          <p className={css.infoText}>
+            <span className={css.label}>Speaks:</span> {teacher.languages ? teacher.languages.join(', ') : 'Not specified'}
+          </p>
+          {teacher.lesson_info && (
+            <p className={css.infoText}>
+              <span className={css.label}>Lesson info:</span> {teacher.lesson_info}
+            </p>
+          )}
+          {teacher.conditions && (
+            <p className={css.infoText}>
+              <span className={css.label}>Conditions:</span> {teacher.conditions.join('; ')}
+            </p>
+          )}
         </div>
-        
+
         <button onClick={handleReadMore} className={css.readMore}>
           {isExpanded ? 'Show less' : 'Read more'}
         </button>
-        
+
         {isExpanded && (
           <div className={css.expandedSection}>
             <p className={css.experience}>{teacher.experience}</p>
-            <div className={css.reviews}>
-              {teacher.reviews.map((review, index) => (
-                <div key={index} className={css.review}>
-                  <div className={css.reviewHeader}>
-                    <p className={css.reviewerInfo}>
-                      <span className={css.reviewerName}>{review.reviewer_name}</span>
-                      <span className={css.reviewRating}>
-                        <FaStar size={14} className={css.star} />
-                        <span className={css.ratingValue}>{review.reviewer_rating.toFixed(1)}</span>
-                      </span>
-                    </p>
+            {teacher.reviews && teacher.reviews.length > 0 ? (
+              <div className={css.reviews}>
+                {teacher.reviews.map((review, index) => (
+                  <div key={index} className={css.review}>
+                    <div className={css.reviewHeader}>
+                      <p className={css.reviewerInfo}>
+                        <span className={css.reviewerName}>{review.reviewer_name}</span>
+                        <span className={css.reviewRating}>
+                          <FaStar size={14} className={css.star} />
+                          <span className={css.ratingValue}>{review.reviewer_rating.toFixed(1)}</span>
+                        </span>
+                      </p>
+                    </div>
+                    <p>{review.comment}</p>
                   </div>
-                  <p>{review.comment}</p>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <p>No reviews available.</p>
+            )}
           </div>
         )}
 
         <div className={css.levels}>
-          {teacher.levels.map(level => (
+          {teacher.levels && teacher.levels.map(level => (
             <span key={level} className={css.level}>#{level}</span>
           ))}
         </div>

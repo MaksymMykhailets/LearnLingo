@@ -38,6 +38,14 @@ const Navigation = ({ onLoginClick, onRegisterClick }) => {
         >
           Teachers
         </NavLink>
+        {user && (
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) => (isActive ? `${css.navLink} ${css.active}` : css.navLink)}
+          >
+            Favorites
+          </NavLink>
+        )}
       </div>
       <div className={css.authButtons}>
         {user ? (

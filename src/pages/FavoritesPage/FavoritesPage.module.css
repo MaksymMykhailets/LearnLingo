@@ -1,0 +1,10 @@
+.favoritesPage {
+    padding: 32px 128px 96px;
+    background-color: #F8F8F8;
+  }
+
+  .cardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
