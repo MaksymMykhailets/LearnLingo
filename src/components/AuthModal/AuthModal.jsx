@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../db/firebaseConfig';
 import { setUser } from '../../redux/auth/slice';
+import { clearFilters } from '../../redux/filters/slice';
+import { clearFavorites } from '../../redux/favorites/slice';
 import { addUser } from '../../redux/auth/operations';
 import css from './AuthModal.module.css';
 import { HiOutlineEyeOff } from "react-icons/hi"; 
@@ -86,10 +88,14 @@ const AuthModal = ({ isOpen, onClose, isRegister }) => {
         await updateProfile(user, { displayName: name });
         await addUser(user.uid, { displayName: name, email });
         dispatch(setUser({ uid: user.uid, email: user.email, displayName: name }));
+        dispatch(clearFilters());
+        dispatch(clearFavorites());
       } else {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         dispatch(setUser({ uid: user.uid, email: user.email, displayName: user.displayName }));
+        dispatch(clearFilters());
+        dispatch(clearFavorites());
       }
       onClose();
     } catch (error) {

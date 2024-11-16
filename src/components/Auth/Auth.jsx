@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../db/firebaseConfig';
 import { clearUser } from '../../redux/auth/slice';
+import { clearFilters } from '../../redux/filters/slice';
+import { clearFavorites } from '../../redux/favorites/slice';
 import AuthModal from '../AuthModal/AuthModal';
 
 const Auth = () => {
@@ -29,6 +31,9 @@ const Auth = () => {
     try {
       await signOut(auth);
       dispatch(clearUser());
+      dispatch(clearFilters());
+      dispatch(clearFavorites());
+      window.location.reload();
     } catch (error) {
       console.error(error.message);
     }
@@ -48,7 +53,11 @@ const Auth = () => {
         </>
       )}
 
-      <AuthModal isOpen={isModalOpen} onClose={closeModal} isRegister={isRegister} />
+      <AuthModal 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+        isRegister={isRegister} 
+      />
     </div>
   );
 };

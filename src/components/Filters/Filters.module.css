@@ -1,0 +1,58 @@
+.filtersContainer {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 32px;
+    align-items: flex-end; 
+  }
+  
+  .filtersContainer label {
+    display: flex;
+    flex-direction: column;
+    color: #8A8A89;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.28;
+  }
+  
+  .filtersContainer select, .filtersContainer button {
+    padding: 18px;
+    margin-top: 8px;
+    border-radius: 14px;
+    border: none;
+
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.11;
+}
+
+  .filtersContainer select {
+    padding-left: 18px;
+    padding-right: 40px;
+    appearance: none;
+    background: url(/public/icons/icon-select.svg) no-repeat right 18px center;
+    background-color: #fff;
+    background-size: 20px;
+    transition: border-color 0.3s ease;
+  }
+
+  .filtersContainer select:focus {
+    border: 2px solid var(--primary);
+    outline: none; 
+}
+  
+  .clearButtonContainer {
+    margin-left: auto;
+  }
+  
+  .clearButton {
+    height: 58.5px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary);
+  }
+  
+  .clearButton:hover,
+  .clearButton:focus {
+    background-color: var(--secondary);
+  }
+  
