@@ -8,7 +8,7 @@ import { FaRegHeart, FaHeart, FaStar } from "react-icons/fa";
 import { IoBookOutline } from "react-icons/io5";
 import toast, { Toaster } from 'react-hot-toast';
 
-const TeacherCard = ({ teacher }) => {
+const TeacherCard = ({ teacher, selectedLevel }) => { 
   const [isExpanded, setIsExpanded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -132,7 +132,17 @@ const TeacherCard = ({ teacher }) => {
 
         <div className={css.levels}>
           {teacher.levels && teacher.levels.map(level => (
-            <span key={level} className={css.level}>#{level}</span>
+            <span 
+              key={level} 
+              className={css.level} 
+              style={{
+                backgroundColor: level === selectedLevel ? 'var(--primary)' : 'inherit',
+                color: level === selectedLevel ? '#fff' : 'inherit',
+                border: level === selectedLevel ? 'none' : '1px solid rgba(18, 20, 23, 0.20)'
+              }}              
+            >
+              #{level}
+            </span>
           ))}
         </div>
 

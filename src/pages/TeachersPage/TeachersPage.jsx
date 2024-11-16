@@ -62,7 +62,11 @@ const TeachersPage = () => {
       <Filters onFilterChange={handleFilterChange} />
       <div className={css.teachersGrid}>
         {filteredTeachers.slice(0, visibleTeachers).map((teacher) => (
-          <TeacherCard key={`${teacher.name}-${teacher.surname}`} teacher={teacher} />
+          <TeacherCard 
+            key={`${teacher.name}-${teacher.surname}`} 
+            teacher={teacher}
+            selectedLevel={filters.level} 
+          />
         ))}
       </div>
       {visibleTeachers < filteredTeachers.length && (
