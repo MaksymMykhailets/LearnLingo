@@ -7,7 +7,6 @@ export const getTeachers = async () => {
   if (snapshot.exists()) {
     return snapshot.val();
   } else {
-    console.log("No data available");
     return [];
   }
 };

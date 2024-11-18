@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
+    overflow: auto;
   }
   
   .modalContent {
@@ -16,6 +17,8 @@
     padding: 64px;
     width: 100%;
     max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
     position: relative;
     border-radius: 30px;
   }
@@ -157,6 +160,7 @@
     font-size: 18px;
     font-weight: 700;
     line-height: 1.55; 
+    transition: background-color 0.3s ease;
   }
   
   .submitButton:hover {

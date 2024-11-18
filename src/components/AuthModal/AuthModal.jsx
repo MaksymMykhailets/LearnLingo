@@ -48,12 +48,17 @@ const registrationSchema = yup.object().shape({
 
 const AuthModal = ({ isOpen, onClose, isRegister }) => {
   const dispatch = useDispatch();
-  const { register, handleSubmit, reset, formState: { errors } } = useForm({
+  const { register, handleSubmit, reset, setValue, getValues, formState: { errors } } = useForm({
     resolver: yupResolver(isRegister ? registrationSchema : loginSchema),
   });
 
   const [showPassword, setShowPassword] = useState(false);
   const [authError, setAuthError] = useState("");
+
+  const handleTrim = (field) => {
+    const value = getValues(field); 
+    setValue(field, value.trim(), { shouldValidate: true }); 
+  };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -99,7 +104,6 @@ const AuthModal = ({ isOpen, onClose, isRegister }) => {
       }
       onClose();
     } catch (error) {
-      console.error("Error code:", error.code);
       if (error.code === "auth/invalid-credential") {
         setAuthError("Invalid credentials. Please try again.");
       } else if (error.code === "auth/too-many-requests") {
@@ -131,12 +135,24 @@ const AuthModal = ({ isOpen, onClose, isRegister }) => {
         <form onSubmit={handleSubmit(onSubmit)} className={css.authForm}>
           {isRegister && (
             <div className={css.formGroup}>
-              <input type="text" {...register('name')} className={css.input} placeholder='Name'/>
+              <input 
+                type="text" 
+                {...register('name')} 
+                className={css.input} 
+                placeholder='Name'
+                onBlur={() => handleTrim('name')}
+              />
               {errors.name && <p className={css.errorText}>{errors.name.message}</p>}
             </div>
           )}
           <div className={css.formGroup}>
-            <input type="email" {...register('email')} className={css.input} placeholder='Email'/>
+            <input 
+              type="email" 
+              {...register('email')} 
+              className={css.input} 
+              placeholder='Email'
+              onBlur={() => handleTrim('email')}
+            />
             {errors.email && <p className={css.errorText}>{errors.email.message}</p>}
           </div>
           <div className={css.formGroup}>
@@ -146,6 +162,7 @@ const AuthModal = ({ isOpen, onClose, isRegister }) => {
                 {...register('password')} 
                 className={css.input} 
                 placeholder='Password' 
+                onBlur={() => handleTrim('password')}
               />
               <span onClick={() => setShowPassword(!showPassword)}>
                 {showPassword ? <LuEye size={20} /> : <HiOutlineEyeOff size={20} />}

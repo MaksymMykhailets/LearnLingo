@@ -39,9 +39,11 @@
     text-align: center; 
     color: #121417;
     font-weight: 500;
+    transition: color 0.3s ease;
 }
   
-.navLink.active {
+.navLink.active,
+.navLink:hover {
     color: var(--primary);
 }
   
@@ -61,11 +63,20 @@
     font-weight: 700;
     line-height: 1.25;
 }
+
+.registerButton {
+    transition: background-color 0.3s ease;
+}
+
+.registerButton:hover {
+    background-color: var(--primary);
+}
   
 .loginButton {
     background: none;
     color: inherit;
     gap: 8px;
+    transition: color 0.3s ease;
 }
   
 .loginButton svg {
@@ -85,4 +96,10 @@
 .logoutButton {
     color: inherit;
     background: none;
+    transition: color 0.3s ease;
+}
+
+.loginButton:hover,
+.logoutButton:hover {
+    color: var(--primary);
 }

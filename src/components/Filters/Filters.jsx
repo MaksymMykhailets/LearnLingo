@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguageFilter, setLevelFilter, setPriceFilter, clearFilters } from '../../redux/filters/slice';
+import { selectLanguageFilter, selectLevelFilter, selectPriceFilter } from '../../redux/filters/selectors';
 import css from './Filters.module.css';
 
 const Filters = ({ onFilterChange }) => {
   const dispatch = useDispatch();
-  const filters = useSelector((state) => state.filters);
+  const languageFilter = useSelector(selectLanguageFilter);
+  const levelFilter = useSelector(selectLevelFilter);
+  const priceRangeFilter = useSelector(selectPriceFilter);
 
   const handleLanguageChange = (e) => {
     dispatch(setLanguageFilter(e.target.value));
@@ -30,7 +33,7 @@ const Filters = ({ onFilterChange }) => {
     <div className={css.filtersContainer}>
       <div className={css.filter}>
         <label>Languages</label>
-        <select value={filters.language} onChange={handleLanguageChange}>
+        <select value={languageFilter} onChange={handleLanguageChange}>
           <option value="">All</option>
           <option value="English">English</option>
           <option value="French">French</option>
@@ -45,7 +48,7 @@ const Filters = ({ onFilterChange }) => {
 
       <div className={css.filter}>
         <label>Level of knowledge</label>
-        <select value={filters.level} onChange={handleLevelChange}>
+        <select value={levelFilter} onChange={handleLevelChange}>
           <option value="">All</option>
           <option value="A1 Beginner">A1 Beginner</option>
           <option value="A2 Elementary">A2 Elementary</option>
@@ -58,7 +61,7 @@ const Filters = ({ onFilterChange }) => {
 
       <div className={css.filter}>
         <label>Price</label>
-        <select value={filters.priceRange} onChange={handlePriceChange}>
+        <select value={priceRangeFilter} onChange={handlePriceChange}>
           <option value="">All</option>
           <option value="20-25">20$ - 25$</option>
           <option value="25-30">25$ - 30$</option>

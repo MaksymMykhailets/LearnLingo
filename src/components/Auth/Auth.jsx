@@ -5,13 +5,14 @@ import { auth } from '../../db/firebaseConfig';
 import { clearUser } from '../../redux/auth/slice';
 import { clearFilters } from '../../redux/filters/slice';
 import { clearFavorites } from '../../redux/favorites/slice';
+import { selectUser } from '../../redux/auth/selectors';
 import AuthModal from '../AuthModal/AuthModal';
 
 const Auth = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isRegister, setIsRegister] = useState(true); 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector(selectUser);
 
   const openRegisterModal = () => {
     setIsRegister(true);
@@ -34,9 +35,7 @@ const Auth = () => {
       dispatch(clearFilters());
       dispatch(clearFavorites());
       window.location.reload();
-    } catch (error) {
-      console.error(error.message);
-    }
+    } catch {}
   };
 
   return (
@@ -52,7 +51,6 @@ const Auth = () => {
           <button onClick={openRegisterModal}>Register</button>
         </>
       )}
-
       <AuthModal 
         isOpen={isModalOpen} 
         onClose={closeModal} 

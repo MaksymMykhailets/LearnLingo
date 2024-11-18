@@ -45,11 +45,11 @@
     background-color: var(--primary);
     font-size: 18px;
     font-weight: 700;
-    line-height: 1.55; 
+    line-height: 1.55;
+    transition: background-color 0.3s ease;
   }
   
-  .getStartedButton:hover,
-  .getStartedButton:focus {
+  .getStartedButton:hover {
     background-color: var(--secondary);
   }
   

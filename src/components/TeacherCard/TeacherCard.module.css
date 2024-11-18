@@ -113,6 +113,13 @@
   background: none;
   text-decoration-line: underline;
   margin-bottom: 32px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.readMore:hover,
+.readMore:focus {
+  color: var(--primary);
 }
 
 .levels {
@@ -184,6 +191,7 @@ line-height: 1.28;
   align-items: center;
   border-radius: 12px;
   background-color: var(--primary);
+  transition: background-color 0.3s ease;
 
   font-size: 18px;
   font-weight: 700;

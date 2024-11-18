@@ -23,13 +23,17 @@ const schema = yup.object().shape({
 });
 
 const BookingForm = ({ teacher, onClose }) => {
-  const { register, handleSubmit, formState: { errors }, trigger } = useForm({
+  const { register, handleSubmit, formState: { errors }, setValue, getValues } = useForm({
     resolver: yupResolver(schema),
     mode: 'onTouched', 
   });
 
-  const onSubmit = (data) => {
-    console.log("Booking data:", data);
+  const handleTrim = (field) => {
+    const value = getValues(field);
+    setValue(field, value.trim(), { shouldValidate: true });
+  };
+
+  const onSubmit = () => {
     onClose(); 
   };
 
@@ -87,7 +91,7 @@ const BookingForm = ({ teacher, onClose }) => {
                   placeholder="Full Name" 
                   {...register("fullName")} 
                   className={css.input} 
-                  onBlur={() => trigger("fullName")} 
+                  onBlur={() => handleTrim("fullName")}
                 />
               </div>
               {errors.fullName && <p className={css.error}>{errors.fullName.message}</p>}
@@ -100,7 +104,7 @@ const BookingForm = ({ teacher, onClose }) => {
                   placeholder="Email" 
                   {...register("email")} 
                   className={css.input} 
-                  onBlur={() => trigger("email")} 
+                  onBlur={() => handleTrim("email")}
                 />
               </div>
               {errors.email && <p className={css.error}>{errors.email.message}</p>}
@@ -113,7 +117,7 @@ const BookingForm = ({ teacher, onClose }) => {
                   placeholder="Phone number" 
                   {...register("phoneNumber")} 
                   className={css.input} 
-                  onBlur={() => trigger("phoneNumber")} 
+                  onBlur={() => handleTrim("phoneNumber")}
                 />
               </div>
               {errors.phoneNumber && <p className={css.error}>{errors.phoneNumber.message}</p>}

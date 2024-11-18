@@ -60,16 +60,22 @@ const TeachersPage = () => {
     <div className={css.page}>
       <Toaster position="top-center" reverseOrder={false} />
       <Filters onFilterChange={handleFilterChange} />
-      <div className={css.teachersGrid}>
-        {filteredTeachers.slice(0, visibleTeachers).map((teacher) => (
-          <TeacherCard 
-            key={`${teacher.name}-${teacher.surname}`} 
-            teacher={teacher}
-            selectedLevel={filters.level} 
-          />
-        ))}
-      </div>
-      {visibleTeachers < filteredTeachers.length && (
+      
+      {filteredTeachers.length === 0 ? (
+        <p className={css.noResults}>No teachers found for the selected filters.</p>
+      ) : (
+        <div className={css.teachersGrid}>
+          {filteredTeachers.slice(0, visibleTeachers).map((teacher) => (
+            <TeacherCard 
+              key={`${teacher.name}-${teacher.surname}`} 
+              teacher={teacher}
+              selectedLevel={filters.level} 
+            />
+          ))}
+        </div>
+      )}
+
+      {visibleTeachers < filteredTeachers.length && filteredTeachers.length > 0 && (
         <div className={css.buttonContainer}>
           <button onClick={loadMoreTeachers} className={css.loadMoreButton}>
             Load more

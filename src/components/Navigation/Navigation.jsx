@@ -4,19 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../db/firebaseConfig';
 import { clearUser } from '../../redux/auth/slice';
+import { selectUser } from '../../redux/auth/selectors';
 import css from './Navigation.module.css';
 
 const Navigation = ({ onLoginClick, onRegisterClick }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector(selectUser);
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
       dispatch(clearUser());
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
+    } catch {}
   };
 
   return (
