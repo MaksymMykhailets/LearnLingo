@@ -103,3 +103,71 @@
 .logoutButton:hover {
     color: var(--primary);
 }
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px; 
+    }
+
+    .navLinks {
+        position: static; 
+        transform: none;
+        gap: 16px; 
+    }
+
+    .authButtons {
+        gap: 8px; 
+    }
+
+    .registerButton {
+        padding: 10px 20px; 
+        font-size: 14px;
+    }
+
+    .loginButton {
+        font-size: 14px;
+    }
+
+    .brandName {
+        font-size: 18px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        align-items: flex-start;
+        padding: 10px; 
+    }
+
+    .navLinks {
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 12px;
+    }
+
+    .authButtons {
+        flex-direction: column; 
+        gap: 4px;
+    }
+
+    .registerButton {
+        width: 100%;
+        padding: 10px; 
+        font-size: 12px;
+    }
+
+    .loginButton {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .brandName {
+        font-size: 12px; 
+    }
+
+    .icon {
+        width: 14px;
+        height: 14px;
+        margin-right: 4px;
+    }
+}
