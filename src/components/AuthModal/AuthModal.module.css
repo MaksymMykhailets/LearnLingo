@@ -112,3 +112,60 @@
     background-color: var(--secondary);
   }
   
+
+@media (max-width: 768px) {
+  .modalContent {
+      padding: 40px;
+      width: 90%; 
+      max-width: 500px; 
+      gap: 16px;
+  }
+
+  .title {
+      font-size: 32px; 
+  }
+
+  .input {
+      padding: 14px 40px 14px 16px; 
+      font-size: 14px;
+  }
+
+  .submitButton {
+      padding: 14px 16px; 
+      font-size: 16px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .modalContent {
+      padding: 20px; 
+      width: 90%;
+      max-width: 300px; 
+      gap: 12px;
+      border-radius: 20px; 
+  }
+
+  .title {
+      font-size: 24px; 
+  }
+
+  .greeting {
+      font-size: 14px; 
+  }
+
+  .input {
+      padding: 12px 36px 12px 12px; 
+      font-size: 14px;
+  }
+
+  .submitButton {
+      padding: 12px;
+      font-size: 14px;
+  }
+
+  .closeButton {
+      top: 10px;
+      right: 10px; 
+  }
+}
