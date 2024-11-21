@@ -19,7 +19,9 @@ const Navigation = ({ onLoginClick, onRegisterClick }) => {
   };
 
   return (
-    <nav className={css.navbar}>
+    <nav
+      className={`${css.navbar} ${user ? css.loggedIn : css.notLoggedIn}`}
+    >
       <div className={css.logo}>
         <span className={css.icon}></span>
         <Link to="/" className={css.brandName}>LearnLingo</Link>

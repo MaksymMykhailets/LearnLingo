@@ -2,6 +2,13 @@
     padding: 32px 128px 96px;
     background-color: #F8F8F8;
   }
+
+  @media screen and (max-width: 768px) {
+    .page {
+      padding: 32px 15px;
+    }
+    
+  }
   
   .teachersGrid {
     display: grid;

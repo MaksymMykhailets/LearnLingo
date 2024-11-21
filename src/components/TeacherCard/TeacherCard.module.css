@@ -202,3 +202,120 @@ line-height: 1.28;
 .bookLessonButton:focus {
   background-color: var(--secondary);
 }
+
+
+@media (max-width: 768px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 16px;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    padding: 9px;
+  }
+
+  .onlineStatus {
+   display: none;
+  }
+
+  .name {
+    font-size: 20px;
+  }
+
+  .statsContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+
+  .bookLessonButton {
+    width: 100%; 
+    padding: 14px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    display: flex;
+    flex-direction: column; 
+    padding: 12px;
+    gap: 12px; 
+    border-radius: 16px; 
+  }
+
+  .avatarSection {
+    display: flex;
+    align-items: center;
+  }
+
+  .avatar {
+    width: 64px;
+    height: 64px;
+    padding: 6px;
+  }
+
+  .infoSection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; 
+  }
+
+  .name {
+    font-size: 16px; 
+  }
+
+  .statsContainer {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 8px; 
+  }
+
+  .stats {
+    display: flex;
+    flex-direction: column; 
+    gap: 8px; 
+    align-items: flex-start; 
+    font-size: 14px; 
+  }
+
+  .stat {
+    display: flex;
+    align-items: center; 
+    gap: 4px; 
+  }
+
+  .money {
+    font-size: 14px;
+  }
+
+  .detailsContainer {
+    gap: 6px; 
+  }
+
+  .infoText {
+    font-size: 12px; 
+    line-height: 1.2; 
+  }
+
+  .levels {
+    flex-wrap: wrap; 
+    gap: 6px; 
+  }
+
+  .level {
+    font-size: 12px; 
+    padding: 6px 8px; 
+  }
+
+  .bookLessonButton {
+    width: 100%;
+    padding: 10px;
+    font-size: 12px; 
+    margin-top: 16px; 
+  }
+}

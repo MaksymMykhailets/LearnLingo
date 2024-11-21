@@ -3,6 +3,13 @@
     background-color: #F8F8F8;
   }
 
+  @media screen and (max-width: 768px) {
+    .favoritesPage {
+      padding: 32px 15px;
+    }
+    
+  }
+
   .cardsContainer {
     display: flex;
     flex-direction: column;

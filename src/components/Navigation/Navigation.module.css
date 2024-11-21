@@ -135,15 +135,23 @@
 
 @media (max-width: 480px) {
     .navbar {
-        align-items: flex-start;
+        align-items: center;
         padding: 10px; 
     }
 
     .navLinks {
-        align-items: flex-start;
+        align-items: center;
         gap: 8px;
         font-size: 12px;
     }
+
+    .navbar.loggedIn {
+        align-items: center;
+      }
+      
+    .navbar.notLoggedIn {
+        align-items: flex-start;
+      }
 
     .authButtons {
         flex-direction: column; 
@@ -163,6 +171,8 @@
 
     .logoutButton {
         font-size: 14px;
+        background-color: lightgray;
+        border-radius: 6px;
     }
 
     .brandName {

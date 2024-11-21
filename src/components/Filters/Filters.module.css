@@ -57,4 +57,51 @@
   .clearButton:focus {
     background-color: var(--secondary);
   }
+
+  @media (max-width: 768px) {
+
+    .filtersContainer button{
+      padding: 9px;
+      font-size: 14px;
+    }
+  
+  }
+  
+
+  @media (max-width: 480px) {
+    .filtersContainer {
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+      align-items: flex-start;
+    }
+  
+    .filtersContainer label {
+      font-size: 12px;
+      line-height: 1.2;
+    }
+  
+    .filtersContainer select,
+    .filtersContainer button {
+      padding: 10px 12px;
+      font-size: 14px;
+      line-height: 1.2; 
+      border-radius: 12px;
+    }
+  
+    .filtersContainer select {
+      background-size: 16px; 
+      padding-right: 30px; 
+    }
+  
+    .clearButtonContainer {
+      width: 100%; 
+    }
+  
+    .clearButton {
+      width: 100%;
+      padding: 12px; 
+      font-size: 14px;
+    }
+  }
   
