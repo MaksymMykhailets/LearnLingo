@@ -116,7 +116,7 @@
   max-width: 92px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .banner {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -144,7 +144,6 @@
   .getStartedButton {
     padding: 12px;
     font-size: 16px;
-    width: 100%;
   }
 
   .imageSection {
@@ -170,7 +169,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
 
   .banner {
     padding: 0 10px 20px;
@@ -209,4 +208,12 @@
   .stat p {
     font-size: 10px;
   }
+}
+
+@media screen and (max-width: 480px) {
+
+  .getStartedButton {
+   width: 100%;
+  }
+  
 }

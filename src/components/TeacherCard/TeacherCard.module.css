@@ -204,7 +204,7 @@ line-height: 1.28;
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .card {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -232,13 +232,12 @@ line-height: 1.28;
   }
 
   .bookLessonButton {
-    width: 100%; 
     padding: 14px;
     font-size: 16px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .card {
     display: flex;
     flex-direction: column; 
@@ -313,9 +312,14 @@ line-height: 1.28;
   }
 
   .bookLessonButton {
-    width: 100%;
     padding: 10px;
     font-size: 12px; 
     margin-top: 16px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .bookLessonButton {
+    width: 100%; 
   }
 }
