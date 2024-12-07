@@ -190,4 +190,8 @@
     .logoutButton {
         padding: 0 4px;
     }
+
+    .navbar {
+        padding: 20px; 
+    }
 }
