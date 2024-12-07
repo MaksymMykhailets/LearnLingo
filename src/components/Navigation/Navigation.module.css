@@ -170,9 +170,10 @@
     }
 
     .logoutButton {
-        font-size: 14px;
+        font-size: 12px;
         background-color: lightgray;
         border-radius: 6px;
+        font-weight: 600;
     }
 
     .brandName {
