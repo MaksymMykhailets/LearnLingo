@@ -124,7 +124,7 @@ const AuthModal = ({ isOpen, onClose, isRegister }) => {
     <div className={css.modalOverlay} onClick={onClose}>
       <div className={css.modalContent} onClick={(e) => e.stopPropagation()}>
         <button className={css.closeButton} onClick={onClose}>
-          <IoCloseOutline size={32} />
+          <IoCloseOutline size={32} color="#121417"/>
         </button>
         
         <h2 className={css.title}>{isRegister ? 'Registration' : 'Log In'}</h2>

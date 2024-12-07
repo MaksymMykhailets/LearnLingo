@@ -115,6 +115,7 @@
   margin-bottom: 32px;
   cursor: pointer;
   transition: color 0.3s ease;
+  color: #121417;
 }
 
 .readMore:hover,
@@ -192,6 +193,7 @@ line-height: 1.28;
   border-radius: 12px;
   background-color: var(--primary);
   transition: background-color 0.3s ease;
+  color: #121417;
 
   font-size: 18px;
   font-weight: 700;
@@ -321,5 +323,10 @@ line-height: 1.28;
 @media (max-width: 480px) {
   .bookLessonButton {
     width: 100%; 
+  }
+
+  .star {
+    color: #FFC531;
+    padding-bottom: 3px;
   }
 }
