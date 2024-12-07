@@ -185,3 +185,9 @@
         margin-right: 4px;
     }
 }
+
+@media (max-width: 480px) {
+    .logoutButton {
+        padding: 0 4px;
+    }
+}
